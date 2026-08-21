@@ -16,7 +16,7 @@ A simple CLI tool I built to instantly set up project workspaces, make directori
 Install it straight from GitHub via pip:
 
 ```
-pip install git+[https://github.com/estrangedknight132/the-scaffolder.git](https://github.com/estrangedknight132/the-scaffolder.git)
+pip install "git+https://github.com/estrangedknight132/the-scaffolder.git"
 ```
 Or clone it locally and install it in editable mode:
 ```
