@@ -6,16 +6,29 @@ import subprocess
 import sys
 import os
 
+# Robust template loader for both installed package and local development
 def load_templates():
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    json_path = os.path.join(base_path, "templates.json")
-    
     try:
-        with open(json_path, "r") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print(f"Error: 'templates.json' not found at {json_path}")
-        return None
+        # Modern way to load bundled data when installed as a package
+        import importlib.resources as pkg_resources
+        try:
+            # Python 3.9+ syntax
+            json_str = pkg_resources.files('scaffolder').joinpath('templates.json').read_text(encoding='utf-8')
+            return json.loads(json_str)
+        except AttributeError:
+            # Fallback syntax for older importlib variants
+            with pkg_resources.open_text('scaffolder', 'templates.json', encoding='utf-8') as f:
+                return json.load(f)
+    except Exception:
+        # Fallback to local path relative to this script file
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        json_path = os.path.join(base_path, "templates.json")
+        try:
+            with open(json_path, "r", encoding='utf-8') as file:
+                return json.load(file)
+        except FileNotFoundError:
+            print(f"Error: 'templates.json' not found at {json_path}")
+            return None
 
 def create_scaffolder():
     templates = load_templates()
@@ -93,7 +106,6 @@ def create_scaffolder():
                     print("Dependencies installed successfully.")
                 else:
                     print("[WARNING]: Pip executable not found in virtual environment.")
-            # -------------------------------------
 
         except subprocess.CalledProcessError:
             print("[WARNING]: Failed to create virtual environment or install dependencies automatically.")
