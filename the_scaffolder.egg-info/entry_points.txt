@@ -1,0 +1,2 @@
+[console_scripts]
+scaffold = scaffolder.main:create_scaffolder

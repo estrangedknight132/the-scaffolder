@@ -1,0 +1,22 @@
+{
+    "python": {
+        "folders": ["src", "tests"],
+        "files": {
+            "src/main.py": "print('This is a python script')\n",
+            "requirements.txt": "# Add your dependencies here\n",
+            ".env": "DEBUG=True\n"
+        }
+    },
+    "java": {
+        "folders": ["src/main/java/com/example", "tests"],
+        "files": {
+            "src/main/java/com/example/Main.java": "package com.example;\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"This is a java script\");\n    }\n}\n"
+        }
+    },
+    "generic": {
+        "folders": ["src", "tests"],
+        "files": {
+            "src/app.txt": "Generic workspace starter file"
+        }
+    }
+}

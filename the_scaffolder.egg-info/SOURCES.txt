@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+scaffolder/__init__.py
+scaffolder/main.py
+the_scaffolder.egg-info/PKG-INFO
+the_scaffolder.egg-info/SOURCES.txt
+the_scaffolder.egg-info/dependency_links.txt
+the_scaffolder.egg-info/entry_points.txt
+the_scaffolder.egg-info/requires.txt
+the_scaffolder.egg-info/top_level.txt
