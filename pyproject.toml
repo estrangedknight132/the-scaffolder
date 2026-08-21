@@ -9,6 +9,9 @@ dependencies = [
     "questionary",
 ]
 
+[project.scripts]
+scaffold = "scaffolder.main:create_scaffolder"
+
 [tool.setuptools]
 packages = ["scaffolder"]
 package-data = { "scaffolder" = ["templates.json"] }
